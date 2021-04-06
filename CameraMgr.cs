@@ -52,7 +52,46 @@ public class CameraMgr : MonoBehaviour
 
     public void SwitchViews(Dropdown change)
     {
-        Debug.LogFormat("{0}:{1}", change.itemText.text, change.value);
-        // Code will go here
+        Debug.LogFormat("{0}:{1}",change.itemText.text,
+            change.value);
+        switch (change.value)
+        {
+            //show Camera 1 view only
+            case 0:
+                MainCamera.enabled = true;
+                PicCam.enabled = false;
+                SideCam.enabled = false;
+                SplitUpperCam.enabled = false;
+                SplitLowerCam.enabled = false;
+
+                break;
+            //Show Camera 1 view only
+            case 1:
+                MainCamera.enabled = false;
+                PicCam.enabled = false;
+                SideCam.enabled = true;
+                SplitUpperCam.enabled = false;
+                SplitLowerCam.enabled = false;
+
+                break;
+            //Show Picture in Picture
+            //With main camera enabled
+            case 2:
+                MainCamera.enabled = true;
+                PicCam.enabled = true;
+                SideCam.enabled = false;
+                SplitUpperCam.enabled = false;
+                SplitLowerCam.enabled = false;
+
+                break;
+                //Show Spilt Screen
+            case 3:
+                MainCamera.enabled = false;
+                PicCam.enabled = false;
+                SideCam.enabled = false;
+                SplitUpperCam.enabled = true;
+                SplitLowerCam.enabled = true;
+
+        }
     }
 }

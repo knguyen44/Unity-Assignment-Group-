@@ -20,7 +20,16 @@ public class CameraMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.mouseScrollDelta.y != 0) 
+        { 
+            Vector3 diff = Vector3.forward * Input.mouseScrollDelta.y; 
+            
+            if (MainCamera.enabled) MainCamera.transform.Translate(diff); 
+            
+            else if (SideCam.enabled) SideCam.transform.Translate(diff); 
+            
+            else if (SplitLowerCam.enabled) SplitLowerCam.transform.Translate(diff); 
+        }
     }
 
     public void OnSliderValueChanged(float value)
